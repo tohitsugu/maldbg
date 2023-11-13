@@ -1,122 +1,62 @@
-// @ts-check
-// `@type` JSDoc annotations allow editor autocompletion and type checking
-// (when paired with `@ts-check`).
-// There are various equivalent ways to declare your Docusaurus config.
-// See: https://docusaurus.io/docs/api/docusaurus-config
-
-import {themes as prismThemes} from 'prism-react-renderer';
+/**
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
 
 /** @type {import('@docusaurus/types').Config} */
-const config = {
+export default {
   title: 'MalDbg',
   tagline: 'Exploring malicious code and malware',
-  favicon: 'img/favicon.ico',
-
-  // Set the production url of your site here
-  url: 'https://maldbg.com',
-  // Set the /<baseUrl>/ pathname under which your site is served
-  // For GitHub pages deployment, it is often '/<projectName>/'
+  organizationName: 'maldbg',
+  projectName: 'maldbg',
   baseUrl: '/',
-
-  // GitHub pages deployment config.
-  // If you aren't using GitHub pages, you don't need these.
-  // organizationName: 'facebook', // Usually your GitHub org/user name.
-  // projectName: 'docusaurus', // Usually your repo name.
-
-  onBrokenLinks: 'throw',
+  url: 'https://maldbg.com',
+  // We can only warn now, since we have blog pages linking to non-blog pages...
+  onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
-
-  // Even if you don't use internationalization, you can use this field to set
-  // useful metadata like html lang. For example, if your site is Chinese, you
-  // may want to replace "en" with "zh-Hans".
-  i18n: {
-    defaultLocale: 'en',
-    locales: ['en'],
-  },
-
+  favicon: 'img/favicon.ico',
+  themes: ['live-codeblock'],
+  plugins: ['ideal-image'],
   presets: [
     [
       'classic',
-      /** @type {import('@docusaurus/preset-classic').Options} */
-      ({
-        docs: {
-          false,
-          // sidebarPath: './sidebars.js',
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-        },
+      {
+        docs: false,
+        pages: false,
         blog: {
-          routeBasePath: '/', 
-          showReadingTime: true,
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
+          routeBasePath: '/',
+          path: 'blog',
+          editUrl: 'https://github.com/tohitsugu/maldbg/',
+          postsPerPage: 3,
+          feedOptions: {
+            type: 'all',
+            copyright: `Copyright © ${new Date().getFullYear()} Maldbg`,
+          },
         },
         theme: {
           customCss: './src/css/custom.css',
         },
-      }),
+      },
     ],
   ],
-
-  themeConfig:
-    /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
-    ({
-      // Replace with your project's social card
-      image: 'img/header.png',
-      navbar: {
-        title: 'MalDbg',
-        logo: {
-          alt: 'MalDbg',
-          src: 'img/logo.svg',
-        },
-        items: [
-          {
-            type: 'docSidebar',
-            sidebarId: 'tutorialSidebar',
-            position: 'left',
-            label: 'Tutorial',
-          },
-          {to: '/blog', label: 'Blog', position: 'left'},
-          {
-            href: 'https://github.com/tohitsugu/maldb',
-            label: 'GitHub',
-            position: 'right',
-          },
-        ],
+  themeConfig: {
+    image: 'img/header.jpg',
+    algolia: {
+      appId: 'X1Z85QJPUV',
+      apiKey: 'bf7211c161e8205da2f933a02534105a',
+      indexName: 'docusaurus-2',
+      contextualSearch: true,
+    },
+    navbar: {
+      hideOnScroll: true,
+      title: 'MalDbg',
+      logo: {
+        alt: 'logo',
+        src: 'img/logo.svg',
+        srcDark: 'img/logo.svg',
       },
-      footer: {
-        style: 'dark',
-        links: [
-          {
-            title: 'Docs',
-            items: [
-              {
-                label: 'Tutorial',
-                to: '/docs/intro',
-              },
-            ],
-          },
-          {
-            title: 'More',
-            items: [
-              {
-                label: 'Blog',
-                to: '/blog',
-              },
-              {
-                label: 'GitHub',
-                href: 'https://github.com/tohitsugu/maldbg',
-              },
-            ],
-          },
-        ],
-        copyright: `Copyright © ${new Date().getFullYear()} MalDbg. Built with Docusaurus.`,
-      },
-      prism: {
-        theme: prismThemes.github,
-        darkTheme: prismThemes.dracula,
-      },
-    }),
+    },
+  },
 };
-
-export default config;
