@@ -44,10 +44,11 @@ export default {
   themeConfig: {
     image: 'img/header.jpg',
     algolia: {
-      appId: 'X1Z85QJPUV',
-      apiKey: 'bf7211c161e8205da2f933a02534105a',
-      indexName: 'docusaurus-2',
+      appId: 'D91Z5P8PPK',
+      apiKey: '20a19dad98fb9a460281402dd6226bde',
+      indexName: 'maldbg',
       contextualSearch: true,
+      insights: true,
     },
     navbar: {
       hideOnScroll: true,
