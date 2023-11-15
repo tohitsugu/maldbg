@@ -9,15 +9,33 @@ image: /img/ssshadow.pnb
 
 ## 0x1 Intro
 
-Not all malicious (or at least dishonest) code can rightfully be called malware, even if the tactics used by the software in question are similar or even undistinguishable from actual malware. The difference is in how they are used. And sometimes - as in this case - you can unknowingly turn your Android device into a hidden SOCKS proxy for paying customers.
+Not all malicious (or at least dishonest) code can rightfully be called malware, even if the tactics used by the software in question are similar or even undistinguishable from actual malware. The difference is in how they are used. And sometimes - as in this case - you can grant developers permission to turn your Android device into a hidden SOCKS proxy for paying customers.
 
-One of my favorite methods of discovering questionable Android network traffic is to install a [Linux chroot image](https://xdaforums.com/t/tutorial-how-to-build-ur-own-chrooted-linux-for-android-step-by-step.3586319/) on a *rooted* device so that I can make use of my favorite command-line tools. It's quick and easy, and I don't need to struggle with bypassing [certificate pinning](https://developer.android.com/privacy-and-security/security-config) or installing any third-party frameworks. This lets me glimpse any network activity before deep-diving using a proxy like BurpSuite. 
+One of my favorite methods of poking around on Android devices is to install a [Linux chroot image](https://xdaforums.com/t/tutorial-how-to-build-ur-own-chrooted-linux-for-android-step-by-step.3586319/) on a *rooted* device so that I can make use of my favorite command-line tools. This gives me access to a full Linux distro on my device.  
 
-I recently discovered an Android app called **AndroDumpper** that seemed innocent enough. However, when I checked for open sockets in the Linux chroot, I found a lot of network activity despite the app sitting open on its main menu. 
+I recently discovered an Android app called **AndroDumpper** that seemed innocent enough. However, when first starting the application you see this message asking you to agree to sharing some of your device's wifi and cellular data:
 
-![ss-command](./img/ssshadow.png)
+![ss-command](./img/androterms.png)
 
-It's always a treat to discover something interesting like this in an application 😁. 
+So what does this mean? Well, after starting the application I can see a new p2p network interface as well as some system commands configuring it:
+
+![ifconfig](./img/ifconfig.png)
+
+![ps](./img/ps.png)
+
+The application appears to be tunneling network traffic through the new `tun0` interface, and if we open a network sniffer such as **Packet Capture** we can see that there is quite a bit of network traffic being used: 
+
+![packetcapture](./img/packet1.png)
+
+![packetcapture-apps](./img/packet.png)
+
+While all this network activity is happening, this is all I see from the application itself: 
+
+![androdumpper-menu](./img/appmenu.png)
+
+Unfortunately, the application is using [certificate pinning](https://developer.android.com/privacy-and-security/security-config) which makes it difficult to actually inspect the network packets. So far my attempts using Frida to bypass certificate pinning have failed for this application. In the past I was able to load a modified Xposed Framework module - if I can get this working I will update this post.  
+
+Seeing as a live inspection of the application is impossible, let's take a look at the APK itself. 
 
 ## 0x2 Decompiled Library
 
@@ -109,11 +127,17 @@ The vast Bright Data SOCKS proxy network allows people (including criminals) to 
 
 However, the reason why the AndroDumpper application was bundling a proxy network disguised as a harmless shared object library remained.  
 
-Well, it turns out that Bright Data offers a [monetization service](https://bright-sdk.com/) to app developers. Rather than including ads (as is typical in free apps), Bright Data offers to turn your application into a node for its network. They were very creative on their part but backhanded and sneaky. After all, **nowhere** in the application description mentioned that by installing the app, you are also turning your device into a proxy server for Bright Data's paying customers.
+Well, it turns out that Bright Data offers a [monetization service](https://bright-sdk.com/) to app developers. Rather than including ads (as is typical in free apps), Bright Data offers to turn your application into a node for its network. They were very creative on their part but backhanded and sneaky. After all, **nowhere** in the agreement clause you see when first running the app does it implicity state you are effectively turning your device into a proxy server for Bright Data's paying customers.
 
 It might be a stretch to call this behavior *malware*, but it raises some ethical considerations. 
 
-All the files can be found on my [github](https://github.com/tohitsugu/androdumpper) if you want to take a peek yourself.  
+Luckily, AndroDumpper *does* allow you to opt out of Luminati from the **Settings** menu, though they fail to mention why you might want to do this - in fact, this is the first time a user actually sees the name **Luminati** mentioned. 
+
+![opt-out](./img/optout.png)
+
+I'm still in the process of reversing this application, and plan to update this post once I do. 
+
+All the files can be found on my [github](https://github.com/tohitsugu/androdumpper) if you want to take a peek yourself. **Note**: I had to compress the files into a `.7z` archive as they were too large to upload by otherwise. 
 
 
 
