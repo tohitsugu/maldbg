@@ -3,9 +3,10 @@ slug: packed-android-proxy-framework
 title: Exploring a Stealth Proxy Framework Packed into an Android Shared Library
 authors: tohitsugu
 tags: [android, hola, luminati, bright data, proxy]
-image: /img/ssshadow.pnb
+image: /img/libtopvpn.png
 ---
 
+import Image from '@theme/IdealImage';
 
 ## 0x1 Intro
 
@@ -15,13 +16,27 @@ One of my favorite methods of poking around on Android devices is to install a [
 
 I recently discovered an Android app called **AndroDumpper** that seemed innocent enough. However, when first starting the application you see this message asking you to agree to sharing some of your device's wifi and cellular data:
 
-![ss-command](./img/androterms.png)
+
+import androterms from './img/androterms.png';
+
+<Image img={androterms} style={{height:500}} />
+
+
+
+{/* truncate */}
+
 
 So what does this mean? Well, after starting the application I can see a new p2p network interface as well as some system commands configuring it:
 
-![ifconfig](./img/ifconfig.png)
+import ifconfig from './img/ifconfig.png';
 
-![ps](./img/ps.png)
+<Image img={ifconfig} style={{height:500}} />
+
+
+import ps from './img/ps.png';
+
+<Image img={ps} style={{width:800}} />
+
 
 The application appears to be tunneling network traffic through the new `tun0` interface, and if we open a network sniffer such as **Packet Capture** we can see that there is quite a bit of network traffic being used: 
 
@@ -31,7 +46,11 @@ The application appears to be tunneling network traffic through the new `tun0` i
 
 While all this network activity is happening, this is all I see from the application itself: 
 
-![androdumpper-menu](./img/appmenu.png)
+import appmenu from './img/appmenu.png';
+
+<Image img={appmenu} style={{height:500}} />
+
+
 
 Unfortunately, the application is using [certificate pinning](https://developer.android.com/privacy-and-security/security-config) which makes it difficult to actually inspect the network packets. So far my attempts using Frida to bypass certificate pinning have failed for this application. In the past I was able to load a modified Xposed Framework module - if I can get this working I will update this post.  
 

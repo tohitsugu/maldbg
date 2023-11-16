@@ -50,6 +50,11 @@ export default {
       contextualSearch: true,
       insights: true,
     },
+    announcementBar: {
+      id: 'announcementBar-3', // Increment on change
+      // content: `⭐️ If you like Docusaurus, give it a star on <a target="_blank" rel="noopener noreferrer" href="https://github.com/facebook/docusaurus">GitHub</a> and follow us on <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/docusaurus">Twitter ${TwitterSvg}</a>`,
+      content: `Newly launched site. Please check back often for updates 😁`,
+    },
     navbar: {
       hideOnScroll: true,
       title: 'MalDbg',
@@ -58,6 +63,14 @@ export default {
         src: 'img/logo.svg',
         srcDark: 'img/logo.svg',
       },
+      items: [
+        {
+        href: 'https://github.com/tohitsugu/maldbg',
+        position: 'right',
+        className: 'header-github-link',
+        'aria-label': 'GitHub repository',
+      },
+    ],
     },
   },
 };

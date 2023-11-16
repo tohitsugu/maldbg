@@ -2,8 +2,8 @@
 slug: turning-the-tables-on-some-hackers
 title: Turning the Tables on Hackers for Fun (But not Profit)
 authors: tohitsugu
-tags: [hacking, threat, sql injection]
-image: /img/hack/tracker.png
+tags: [hacking, threat, sql injection, botnet, malware, zeus]
+image: ./img/hack/tracker.png
 ---
 
 
@@ -23,6 +23,8 @@ Don't actually do any of this. Someone once sent me threatening pictures of my c
 Anyway. C&C web panels are commonly included with malware, and act as a central dashboard providing statistics, command functionality, and access to stolen information such as passwords. As they are essentially the heart and brain of a malware campaign and can be used to control thousands of infected hosts they tend to be hidden on obscure domains, deep from the prying eyes of Google and other search indexers, making them difficult to discover. The panels themselves are usually secured with long and complicated passwords and sometimes require specific URL parameters to be present before access is granted.
 
 They also tend to be poorly coded and subject to exploitation, which we will leverage to our advantage 😁. 
+
+{/* truncate */}
 
 First, we need to find an admin panel for an active botnet. This can be difficult, depending on your standards, and often is time consuming. Options including reverse-engineering malware found in the wild, using a malware tracker, or social engineering someone on one of the underground forums. Because I'm lazy I chose the second option, **using a malware tracker**, which conveniently provides the C&C url directly. The downside is the link most likely will not last long now as it has been marked as a malware host. Most serious threat actors will migrate to a new domain at the first whiff of public detection.
 
