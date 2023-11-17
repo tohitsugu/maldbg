@@ -9,7 +9,7 @@
 export default {
   title: 'MalDbg',
   tagline: 'Exploring malicious code and malware',
-  organizationName: 'maldbg',
+  organizationName: 'tohitsugu',
   projectName: 'maldbg',
   baseUrl: '/',
   url: 'https://maldbg.com',
@@ -52,7 +52,6 @@ export default {
     },
     announcementBar: {
       id: 'announcementBar-3', // Increment on change
-      // content: `⭐️ If you like Docusaurus, give it a star on <a target="_blank" rel="noopener noreferrer" href="https://github.com/facebook/docusaurus">GitHub</a> and follow us on <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/docusaurus">Twitter ${TwitterSvg}</a>`,
       content: `Newly launched site. Please check back often for updates 😁`,
     },
     navbar: {
@@ -69,6 +68,12 @@ export default {
         position: 'right',
         className: 'header-github-link',
         'aria-label': 'GitHub repository',
+      },
+      {
+        href: 'https://t.me/tohitsugu',
+        position: 'right',
+        className: 'header-telegram-link',
+        'aria-label': 'Telegram',
       },
     ],
     },
