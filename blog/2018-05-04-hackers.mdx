@@ -7,9 +7,9 @@ image: ./img/hack/tracker.png
 ---
 
 
-## 0x1 Intro
+## 0x01 Init
 
-:::note 
+:::tip Note 
 This is a repost of an old blog post I made on another site.
 :::
 
@@ -32,7 +32,7 @@ Here's an example of a malware tracker:
 
 ![malware-tracker](./img/hack/tracker.png)
 
-## 0x2 Reconnaissance
+## 0x02 Reconnaissance
 
 Looking at some recent URLs we see a domain hosting both KeyBase and Pony, making this ideal for reasons discussed shortly. Serious players almost never use a single host for multiple C&C panels, meaning the owner or owners are most likely new to the scene and inexperienced. This is good for us as it increases our chances at finding a bug or mistake to exploit.
 
@@ -79,7 +79,7 @@ Now we have the actual mysql credentials and are getting somewhere. We can use t
 ![mysql-databases](./img/hack/mysql.png)
 
 
-## 0x3 Exploitation 
+## 0x03 Exploitation 
 
 Using phpmyadmin, let's add a single 1-line backdoor:
 
@@ -107,7 +107,7 @@ Also on host were CC tracks and full card info for online and in-store fraudulen
 
 ![cc-tracks](./img/hack/tracks.png)
 
-## 0x4 Conclusion 
+## 0x04 Conclusion 
 
 The owners of the malware caught on at this point and took everything offline. Unfortunately for them, all the bots not yet suffering from Cryptolocker were deleted by me first 🤭.
 
