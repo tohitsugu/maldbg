@@ -100,7 +100,7 @@ The malware then uses Powershell to access the Windows registry. The code contai
 
 import registry from './img/ipstorm/registry.png';
 
-<Image img={registry}  alt="storm symbol tree" style={{width:1000}} />
+<Image img={registry}  alt="storm symbol tree" style={{width:700}} />
 
 It later confirms it has been added to the registry keys by calling the  `storm.util.IsPersisted` function. 
 
@@ -248,7 +248,7 @@ The last address - `_dnsaddr.bootstrap.libp2p.io` - is interesting as it appears
 
 import dns from './img/ipstorm/dns.png';
 
-<Image img={dns}  alt="multiaddr-dns" style={{width:800}} />
+<Image img={dns}  alt="multiaddr-dns" style={{width:700}} />
 
 Without multiaddr support, the domain is unreachable as-is, possibly another built-in defense mechanism to evade analysis in a sandbox. 
 
