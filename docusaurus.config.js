@@ -7,7 +7,7 @@
 
 /** @type {import('@docusaurus/types').Config} */
 export default {
-  title: 'Maldbg - Malware Analysis - Recent Posts',
+  title: 'Maldbg - Malware Analysis Blog',
   tagline: 'Exploring malicious code and malware',
   organizationName: 'tohitsugu',
   projectName: 'maldbg',
