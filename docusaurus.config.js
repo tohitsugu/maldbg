@@ -51,7 +51,6 @@ export default {
       insights: true,
     },
     announcementBar: {
-      //id: null,
       id: 'announcementBar-3', // Increment on change
       content: `Check for updates`,
     },
