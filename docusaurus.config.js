@@ -51,8 +51,9 @@ export default {
       insights: true,
     },
     announcementBar: {
-      id: 'announcementBar-3', // Increment on change
-      content: `Newly launched site. Please check back often for updates 😁`,
+      id: null,
+      //id: 'announcementBar-3', // Increment on change
+      //content: `Newly launched site. Please check back often for updates 😁`,
     },
     navbar: {
       hideOnScroll: true,
