@@ -23,10 +23,10 @@ export default {
     [
       'classic',
       {
-        docs: false,
+        docs: true,
         pages: false,
         blog: {
-          routeBasePath: '/',
+          routeBasePath: '/blog',
           path: 'blog',
           editUrl: 'https://github.com/tohitsugu/maldbg/',
           postsPerPage: 3,
