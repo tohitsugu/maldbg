@@ -50,11 +50,11 @@ export default {
       contextualSearch: true,
       insights: true,
     },
-    /*announcementBar: {
-      id: null,
-      //id: 'announcementBar-3', // Increment on change
-      //content: `Newly launched site. Please check back often for updates 😁`,
-    },*/
+    announcementBar: {
+      //id: null,
+      id: 'announcementBar-3', // Increment on change
+      content: `Check for updates`,
+    },
     navbar: {
       hideOnScroll: true,
       title: 'MalDbg',
