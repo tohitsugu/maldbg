@@ -6,6 +6,7 @@
 
 /* You can override the default Infima variables here. */
 :root {
+<<<<<<< HEAD
   --ifm-color-primary: #b82c46;
   --ifm-color-primary-dark: #852033;
   --ifm-color-primary-darker: #52141f;
@@ -14,10 +15,20 @@
   --ifm-color-primary-lighter: #e14764;
   --ifm-color-primary-lightest: #eb607a;
   --ifm-link-color: #086dd6; 
+=======
+  --ifm-color-primary: #2e8555;
+  --ifm-color-primary-dark: #29784c;
+  --ifm-color-primary-darker: #277148;
+  --ifm-color-primary-darkest: #205d3b;
+  --ifm-color-primary-light: #33925d;
+  --ifm-color-primary-lighter: #359962;
+  --ifm-color-primary-lightest: #3cad6e;
+>>>>>>> b85e6b9b7b890fca1bb13b69a9c6c567e31f196a
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
 }
 
+<<<<<<< HEAD
 div[class^='announcementBar_'] {
   font-size: 20px;
 
@@ -42,6 +53,8 @@ div[class^='announcementBar_'] {
   font-weight: bold;
 }
 
+=======
+>>>>>>> b85e6b9b7b890fca1bb13b69a9c6c567e31f196a
 .header-github-link:hover {
   opacity: 0.6;
 }
@@ -60,6 +73,10 @@ div[class^='announcementBar_'] {
     no-repeat;
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> b85e6b9b7b890fca1bb13b69a9c6c567e31f196a
 .header-telegram-link:hover {
   opacity: 0.6;
 }
@@ -80,7 +97,248 @@ div[class^='announcementBar_'] {
   no-repeat;
 }
 
+<<<<<<< HEAD
 
+=======
+/* user-guide-images.css */
+
+/* Image containers */
+.image-container {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.image-container img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Screenshot groups */
+.screenshot-group {
+  margin: 2rem 0;
+  text-align: center;
+}
+
+.screenshot-group .screenshot {
+  display: inline-block;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.screenshot-group img {
+  width: 100%;
+  height: auto;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.screenshot-group .caption {
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+  color: #666;
+  font-style: italic;
+}
+
+/* Screenshot rows (side by side) */
+.screenshot-row {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 2rem 0;
+}
+
+.screenshot-row .screenshot {
+  flex: 1;
+  min-width: 250px;
+  max-width: 350px;
+  text-align: center;
+}
+
+.screenshot-row img {
+  width: 100%;
+  height: auto;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.screenshot-row .caption {
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+  color: #666;
+  font-style: italic;
+}
+
+/* Feature grid */
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.feature-card {
+  text-align: center;
+  padding: 2rem;
+  background: #f9f9f9;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+}
+
+.feature-card img {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 1rem;
+}
+
+.feature-card h4 {
+  margin: 1rem 0 0.5rem 0;
+  color: #000;
+}
+
+.feature-card p {
+  color: #666;
+  font-size: 0.95rem;
+}
+
+/* Infographic */
+.infographic {
+  text-align: center;
+  margin: 2rem 0;
+  padding: 2rem;
+  background: #f5f5f5;
+  border-radius: 8px;
+}
+
+.infographic img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Security badges */
+.security-badge-row {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin: 2rem 0;
+}
+
+.security-badge-row img {
+  height: 60px;
+  width: auto;
+}
+
+/* Troubleshooting grid */
+.troubleshooting-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.issue-card {
+  text-align: center;
+  padding: 1.5rem;
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+}
+
+.issue-card img {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 1rem;
+}
+
+.issue-card h4 {
+  margin: 0.5rem 0;
+  color: #000;
+  font-size: 1.1rem;
+}
+
+.issue-card p {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+/* Support options */
+.support-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.support-card {
+  text-align: center;
+  padding: 2rem;
+  background: #ffffff;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.support-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.support-card img {
+  width: 64px;
+  height: 64px;
+  margin-bottom: 1rem;
+}
+
+.support-card h4 {
+  margin: 0.5rem 0;
+  color: #000;
+}
+
+.support-card p {
+  color: #666;
+  font-size: 0.9rem;
+  margin: 0.5rem 0;
+}
+
+.support-card a {
+  color: #000;
+  text-decoration: none;
+  font-weight: 600;
+  border-bottom: 2px solid #000;
+  padding-bottom: 2px;
+}
+
+.support-card a:hover {
+  opacity: 0.7;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+  .screenshot-row {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .screenshot-row .screenshot {
+    max-width: 100%;
+  }
+  
+  .feature-grid,
+  .troubleshooting-grid,
+  .support-options {
+    grid-template-columns: 1fr;
+  }
+  
+  .security-badge-row img {
+    height: 40px;
+  }
+}
+>>>>>>> b85e6b9b7b890fca1bb13b69a9c6c567e31f196a
 
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
