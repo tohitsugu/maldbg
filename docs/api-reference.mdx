@@ -1,0 +1,670 @@
+---
+id: api-reference
+title: API Reference
+sidebar_label: API Reference
+sidebar_position: 1
+description: Complete API reference for the VerifyID Identity Proofing Platform
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# API Reference
+
+Complete API documentation for integrating Identity Co's VerifyID into your application.
+
+## Getting Started
+
+### Base URL
+
+`https://api.verifyid.com/v2`
+
+### Authentication
+
+All API requests require authentication using an API key in the request header:
+`Authorization: Bearer YOUR_API_KEY`
+
+
+### Rate Limits
+
+| Tier | Requests/Minute | Requests/Day |
+|------|----------------|--------------|
+| Free | 60 | 10,000 |
+| Pro | 600 | 100,000 |
+| Enterprise | Unlimited | Unlimited |
+
+### Response Format
+
+All responses are returned in JSON format with appropriate HTTP status codes.
+
+**Success Response:**
+
+```json 
+{
+  "success": true,
+  "data": { ... }
+}
+```
+
+**Error Response:**
+
+```json
+{
+  "success": false,
+  "error": {
+    "code": "INVALID_REQUEST",
+    "message": "The request parameters are invalid"
+  }
+}
+```
+---
+
+## Identity Verification
+
+### Create Verification Session
+
+Create a new identity verification session for a user.
+
+**Endpoint:** `POST /verifications`
+
+<Tabs>
+<TabItem value="javascript" label="JavaScript">
+
+```javascript 
+fetch('https://api.verifyid.com/v2/verifications', {
+  method: 'POST',
+  headers: {
+    'Authorization': 'Bearer YOUR_API_KEY',
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    user_id: 'user_12345',
+    verification_type: 'full',
+    callback_url: 'https://yourapp.com/webhook',
+    metadata: {
+      session_id: 'sess_abc123'
+    }
+  })
+})
+.then(response => response.json())
+.then(data => console.log(data))
+.catch(error => console.error('Error:', error));
+```
+</TabItem>
+
+<TabItem value="python" label="Python">
+```python 
+import requests
+
+
+url = 'https://api.verifyid.com/v2/verifications'
+headers = {
+    'Authorization': 'Bearer YOUR_API_KEY',
+    'Content-Type': 'application/json'
+}
+data = {
+    'user_id': 'user_12345',
+    'verification_type': 'full',
+    'callback_url': 'https://yourapp.com/webhook',
+    'metadata': {
+        'session_id': 'sess_abc123'
+    }
+}
+
+
+response = requests.post(url, headers=headers, json=data)
+print(response.json())
+```
+
+</TabItem>
+</Tabs>
+
+
+**Parameters:**
+
+
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| user_id | string | Yes | Unique identifier for the user |
+| verification_type | string | Yes | Type: `basic`, `standard`, or `full` |
+| callback_url | string | No | Webhook URL for verification results |
+| metadata | object | No | Additional custom data |
+
+**Response:**
+
+```json
+{
+  "verification_id": "ver_abc123xyz",
+  "status": "pending",
+  "user_id": "user_12345",
+  "verification_url": "https://verify.verifyid.com/ver_abc123xyz",
+  "expires_at": "2024-11-17T18:30:00Z",
+  "created_at": "2024-11-17T17:30:00Z"
+}
+```
+
+---
+
+### Get Verification Status
+
+Retrieve the current status of a verification session.
+
+**Endpoint:** `GET /verifications/{verification_id}`
+
+<Tabs>
+<TabItem value="javascript" label="JavaScript">
+```javascript
+const verificationId = 'ver_abc123xyz';
+
+
+fetch(https://api.verifyid.com/v2/verifications/${verificationId}, {
+  method: 'GET',
+  headers: {
+    'Authorization': 'Bearer YOUR_API_KEY'
+  }
+})
+.then(response => response.json())
+.then(data => console.log(data));
+```
+
+</TabItem>
+<TabItem value="python" label="Python">
+```python
+import requests
+
+
+verification_id = 'ver_abc123xyz'
+url = f'https://api.verifyid.com/v2/verifications/{verification_id}'
+headers = {
+    'Authorization': 'Bearer YOUR_API_KEY'
+}
+
+
+response = requests.get(url, headers=headers)
+print(response.json())
+```
+</TabItem>
+</Tabs>
+
+**Response:**
+
+```json
+{
+  "verification_id": "ver_abc123xyz",
+  "status": "completed",
+  "user_id": "user_12345",
+  "verification_type": "full",
+  "result": {
+    "identity_verified": true,
+    "document_verified": true,
+    "face_match": true,
+    "liveness_check": true,
+    "confidence_score": 0.98
+  },
+  "documents": [
+    {
+      "document_id": "doc_123",
+      "type": "drivers_license",
+      "country": "US",
+      "state": "CA",
+      "verified": true
+    }
+  ],
+  "completed_at": "2024-11-17T17:35:00Z"
+}
+```
+
+---
+
+## Document Verification
+
+### Upload Document
+
+Upload a document image for verification.
+
+**Endpoint:** `POST /documents`
+
+<Tabs>
+<TabItem value="javascript" label="JavaScript">
+```javascript
+const formData = new FormData();
+formData.append('file', fileInput.files[0]);
+formData.append('document_type', 'passport');
+formData.append('user_id', 'user_12345');
+
+
+fetch('https://api.verifyid.com/v2/documents', {
+  method: 'POST',
+  headers: {
+    'Authorization': 'Bearer YOUR_API_KEY'
+  },
+  body: formData
+})
+.then(response => response.json())
+.then(data => console.log(data));
+```
+</TabItem>
+
+<TabItem value="python" label="Python">
+```python
+import requests
+
+
+url = 'https://api.verifyid.com/v2/documents'
+headers = {
+    'Authorization': 'Bearer YOUR_API_KEY'
+}
+files = {
+    'file': open('passport.jpg', 'rb')
+}
+data = {
+    'document_type': 'passport',
+    'user_id': 'user_12345'
+}
+
+
+response = requests.post(url, headers=headers, files=files, data=data)
+print(response.json())
+```
+</TabItem>
+</Tabs>
+
+**Parameters:**
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| file | file | Yes | Document image (JPEG, PNG, PDF) |
+| document_type | string | Yes | `passport`, `drivers_license`, `national_id` |
+| user_id | string | Yes | User identifier |
+
+**Response:**
+
+```json
+{
+  "document_id": "doc_789xyz",
+  "status": "processing",
+  "document_type": "passport",
+  "uploaded_at": "2024-11-17T17:40:00Z"
+}
+```
+
+---
+
+### Verify Document
+
+Extract and verify information from an uploaded document.
+
+**Endpoint:** `POST /documents/{document_id}/verify`
+
+<Tabs>
+<TabItem value="javascript" label="JavaScript">
+```javascript
+const documentId = 'doc_789xyz';
+
+
+fetch(https://api.verifyid.com/v2/documents/${documentId}/verify, {
+  method: 'POST',
+  headers: {
+    'Authorization': 'Bearer YOUR_API_KEY',
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    perform_ocr: true,
+    check_authenticity: true
+  })
+})
+.then(response => response.json())
+.then(data => console.log(data));
+```
+</TabItem>
+<TabItem value="python" label="Python">
+```python
+import requests
+
+
+document_id = 'doc_789xyz'
+url = f'https://api.verifyid.com/v2/documents/{document_id}/verify'
+headers = {
+    'Authorization': 'Bearer YOUR_API_KEY',
+    'Content-Type': 'application/json'
+}
+data = {
+    'perform_ocr': True,
+    'check_authenticity': True
+}
+
+
+response = requests.post(url, headers=headers, json=data)
+print(response.json())
+```
+</TabItem>
+</Tabs>
+
+**Response:**
+
+```json
+{
+  "document_id": "doc_789xyz",
+  "verified": true,
+  "authenticity_score": 0.96,
+  "extracted_data": {
+    "full_name": "John Doe",
+    "date_of_birth": "1990-01-15",
+    "document_number": "P123456789",
+    "expiration_date": "2030-01-15",
+    "nationality": "US"
+  },
+  "verified_at": "2024-11-17T17:42:00Z"
+}
+```
+---
+## Biometric Verification
+
+### Submit Biometric Data
+
+Submit biometric data for liveness detection and face matching.
+
+**Endpoint:** `POST /biometrics/verify`
+
+<Tabs>
+<TabItem value="javascript" label="JavaScript">
+```javascript
+const formData = new FormData();
+formData.append('selfie', selfieFile);
+formData.append('user_id', 'user_12345');
+formData.append('document_id', 'doc_789xyz');
+formData.append('liveness_check', 'true');
+
+
+fetch('https://api.verifyid.com/v2/biometrics/verify', {
+  method: 'POST',
+  headers: {
+    'Authorization': 'Bearer YOUR_API_KEY'
+  },
+  body: formData
+})
+.then(response => response.json())
+.then(data => console.log(data));
+```
+</TabItem>
+<TabItem value="python" label="Python">
+```python
+import requests
+
+
+url = 'https://api.verifyid.com/v2/biometrics/verify'
+headers = {
+    'Authorization': 'Bearer YOUR_API_KEY'
+}
+files = {
+    'selfie': open('selfie.jpg', 'rb')
+}
+data = {
+    'user_id': 'user_12345',
+    'document_id': 'doc_789xyz',
+    'liveness_check': 'true'
+}
+
+
+response = requests.post(url, headers=headers, files=files, data=data)
+print(response.json())
+```
+
+</TabItem>
+</Tabs>
+
+**Parameters:**
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| selfie | file | Yes | User selfie image |
+| user_id | string | Yes | User identifier |
+| document_id | string | No | Document ID for face matching |
+| liveness_check | boolean | No | Perform liveness detection |
+
+**Response:**
+
+```json
+{
+  "biometric_id": "bio_456def",
+  "liveness_passed": true,
+  "liveness_score": 0.97,
+  "face_match": true,
+  "match_confidence": 0.95,
+  "verified_at": "2024-11-17T17:45:00Z"
+}
+```
+---
+## Webhooks
+
+### Webhook Events
+
+VerifyID sends webhook notifications for verification events.
+
+**Event Types:**
+
+| Event | Description |
+|-------|-------------|
+| verification.completed | Verification process completed |
+| verification.failed | Verification process failed |
+| document.verified | Document verification completed |
+| biometric.verified | Biometric verification completed |
+
+**Webhook Payload Example:**
+
+```json
+{
+  "event": "verification.completed",
+  "timestamp": "2024-11-17T17:50:00Z",
+  "data": {
+    "verification_id": "ver_abc123xyz",
+    "user_id": "user_12345",
+    "status": "approved",
+    "result": {
+      "identity_verified": true,
+      "confidence_score": 0.98
+    }
+  }
+}
+```
+
+### Verify Webhook Signature
+
+<Tabs>
+<TabItem value="javascript" label="JavaScript">
+```javascript
+const crypto = require('crypto');
+
+
+function verifyWebhookSignature(payload, signature, secret) {
+  const hmac = crypto.createHmac('sha256', secret);
+  const digest = hmac.update(payload).digest('hex');
+  return signature === digest;
+}
+
+
+// In your webhook handler
+app.post('/webhook', (req, res) => {
+  const signature = req.headers['x-verifyid-signature'];
+  const payload = JSON.stringify(req.body);
+
+
+  if (verifyWebhookSignature(payload, signature, 'your_webhook_secret')) {
+    // Process webhook
+    console.log('Webhook verified');
+    res.status(200).send('OK');
+  } else {
+    res.status(401).send('Unauthorized');
+  }
+});
+```
+</TabItem>
+<TabItem value="python" label="Python">
+```python
+import hmac
+import hashlib
+
+
+def verify_webhook_signature(payload, signature, secret):
+    computed = hmac.new(
+        secret.encode('utf-8'),
+        payload.encode('utf-8'),
+        hashlib.sha256
+    ).hexdigest()
+    return hmac.compare_digest(computed, signature)
+
+# In your webhook handler
+@app.route('/webhook', methods=['POST'])
+def webhook():
+    signature = request.headers.get('X-VerifyID-Signature')
+    payload = request.get_data(as_text=True)
+
+
+if verify_webhook_signature(payload, signature, 'your_webhook_secret'):
+    # Process webhook
+    print('Webhook verified')
+    return 'OK', 200
+else:
+    return 'Unauthorized', 401
+```       
+</TabItem>
+</Tabs>
+
+---
+
+## Error Handling
+
+### HTTP Status Codes
+
+| Code | Description |
+|------|-------------|
+| 200 | Success |
+| 201 | Created |
+| 400 | Bad Request |
+| 401 | Unauthorized |
+| 403 | Forbidden |
+| 404 | Not Found |
+| 429 | Too Many Requests |
+| 500 | Internal Server Error |
+
+### Error Codes
+
+| Code | Description |
+|------|-------------|
+| INVALID_REQUEST | Request parameters are invalid |
+| UNAUTHORIZED | Invalid API key |
+| RATE_LIMIT_EXCEEDED | Too many requests |
+| VERIFICATION_EXPIRED | Verification session expired |
+| DOCUMENT_INVALID | Document could not be verified |
+| BIOMETRIC_FAILED | Biometric verification failed |
+| INSUFFICIENT_CREDITS | Account has insufficient credits |
+
+**Error Response Example:**
+
+```json
+{
+  "success": false,
+  "error": {
+    "code": "DOCUMENT_INVALID",
+    "message": "The uploaded document could not be verified",
+    "details": {
+      "reason": "Document quality too low",
+      "suggestion": "Please upload a clearer image"
+    }
+  }
+}
+```
+
+---
+
+## SDKs and Libraries
+
+### Official SDKs
+
+- **JavaScript/Node.js**: `npm install @verifyid/sdk`
+- **Python**: `pip install verifyid-sdk`
+- **Ruby**: `gem install verifyid`
+- **PHP**: `composer require verifyid/sdk`
+
+### SDK Example
+
+<Tabs>
+<TabItem value="javascript" label="JavaScript">
+
+```javascript
+const VerifyID = require('@verifyid/sdk');
+
+
+const client = new VerifyID('YOUR_API_KEY');
+
+
+// Create verification
+const verification = await client.verifications.create({
+  user_id: 'user_12345',
+  verification_type: 'full'
+});
+
+
+console.log(verification.verification_url);
+```
+</TabItem>
+<TabItem value="python" label="Python">
+
+```python
+from verifyid import VerifyID
+
+
+client = VerifyID('YOUR_API_KEY')
+
+# Create verification
+
+verification = client.verifications.create(
+    user_id='user_12345',
+    verification_type='full'
+)
+
+
+print(verification.verification_url)
+```
+</TabItem>
+</Tabs>
+
+## Testing
+
+### Sandbox Environment
+
+Use the sandbox environment for testing:
+
+```
+https://sandbox.api.verifyid.com/v2
+```
+
+### Test API Keys
+
+- **Sandbox Key**: `sk_test_abc123xyz`
+- **Test User ID**: `test_user_001`
+
+### Test Documents
+
+Use these test document numbers to simulate different scenarios:
+
+| Document Number | Result |
+|----------------|---------|
+| TEST_PASS_001 | Verification passes |
+| TEST_FAIL_001 | Verification fails |
+| TEST_PENDING_001 | Stays in pending status |
+
+---
+
+## Support
+
+- **Documentation**: https://docs.verifyid.com
+- **API Status**: https://status.verifyid.com
+- **Support Email**: support@verifyid.com
+- **Developer Forum**: https://forum.verifyid.com
+
+---
+
+*Last updated: November 17, 2024*  
+*API Version: 2.0*
