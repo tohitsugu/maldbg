@@ -1,0 +1,309 @@
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
+/* You can override the default Infima variables here. */
+:root {
+  --ifm-color-primary: #2e8555;
+  --ifm-color-primary-dark: #29784c;
+  --ifm-color-primary-darker: #277148;
+  --ifm-color-primary-darkest: #205d3b;
+  --ifm-color-primary-light: #33925d;
+  --ifm-color-primary-lighter: #359962;
+  --ifm-color-primary-lightest: #3cad6e;
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+}
+
+.header-github-link:hover {
+  opacity: 0.6;
+}
+
+.header-github-link::before {
+  content: '';
+  width: 24px;
+  height: 24px;
+  display: flex;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12'/%3E%3C/svg%3E")
+    no-repeat;
+}
+
+[data-theme='dark'] .header-github-link::before {
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='white' d='M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12'/%3E%3C/svg%3E")
+    no-repeat;
+}
+
+
+.header-telegram-link:hover {
+  opacity: 0.6;
+}
+
+.header-telegram-link::before {
+  content: '';
+  width: 24px;
+  height: 24px;
+  display: flex;
+  background: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2aWV3Qm94PSIwIDAgMjQwLjEgMjQwLjEiPgo8bGluZWFyR3JhZGllbnQgaWQ9Ik92YWxfMV8iIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iLTgzOC4wNDEiIHkxPSI2NjAuNTgxIiB4Mj0iLTgzOC4wNDEiIHkyPSI2NjAuMzQyNyIgZ3JhZGllbnRUcmFuc2Zvcm09Im1hdHJpeCgxMDAwIDAgMCAtMTAwMCA4MzgxNjEgNjYwNTgxKSI+CiA8c3RvcCBvZmZzZXQ9IjAiIHN0eWxlPSJzdG9wLWNvbG9yOiMyQUFCRUUiLz4KIDxzdG9wIG9mZnNldD0iMSIgc3R5bGU9InN0b3AtY29sb3I6IzIyOUVEOSIvPgo8L2xpbmVhckdyYWRpZW50Pgo8Y2lyY2xlIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBmaWxsPSJ1cmwoI092YWxfMV8pIiBjeD0iMTIwLjEiIGN5PSIxMjAuMSIgcj0iMTIwLjEiLz4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGZpbGw9IiNGRkZGRkYiIGQ9Ik01NC4zLDExOC44YzM1LTE1LjIsNTguMy0yNS4zLDcwLTMwLjIgYzMzLjMtMTMuOSw0MC4zLTE2LjMsNDQuOC0xNi40YzEsMCwzLjIsMC4yLDQuNywxLjRjMS4yLDEsMS41LDIuMywxLjcsMy4zczAuNCwzLjEsMC4yLDQuN2MtMS44LDE5LTkuNiw2NS4xLTEzLjYsODYuMyBjLTEuNyw5LTUsMTItOC4yLDEyLjNjLTcsMC42LTEyLjMtNC42LTE5LTljLTEwLjYtNi45LTE2LjUtMTEuMi0yNi44LTE4Yy0xMS45LTcuOC00LjItMTIuMSwyLjYtMTkuMWMxLjgtMS44LDMyLjUtMjkuOCwzMy4xLTMyLjMgYzAuMS0wLjMsMC4xLTEuNS0wLjYtMi4xYy0wLjctMC42LTEuNy0wLjQtMi41LTAuMmMtMS4xLDAuMi0xNy45LDExLjQtNTAuNiwzMy41Yy00LjgsMy4zLTkuMSw0LjktMTMsNC44IGMtNC4zLTAuMS0xMi41LTIuNC0xOC43LTQuNGMtNy41LTIuNC0xMy41LTMuNy0xMy03LjlDNDUuNywxMjMuMyw0OC43LDEyMS4xLDU0LjMsMTE4Ljh6Ii8+Cjwvc3ZnPg==")
+  no-repeat;
+}
+
+[data-theme='dark'] .header-telegram-link::before {
+  width: 36px;
+  height: 36px;
+  background: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+CjxwYXRoIGZpbGw9J3doaXRlJyBkPSJNIDMyIDEwIEMgMTkuODUgMTAgMTAgMTkuODUgMTAgMzIgQyAxMCA0NC4xNSAxOS44NSA1NCAzMiA1NCBDIDQ0LjE1IDU0IDU0IDQ0LjE1IDU0IDMyIEMgNTQgMTkuODUgNDQuMTUgMTAgMzIgMTAgeiBNIDMyIDE0IEMgNDEuOTQxIDE0IDUwIDIyLjA1OSA1MCAzMiBDIDUwIDQxLjk0MSA0MS45NDEgNTAgMzIgNTAgQyAyMi4wNTkgNTAgMTQgNDEuOTQxIDE0IDMyIEMgMTQgMjIuMDU5IDIyLjA1OSAxNCAzMiAxNCB6IE0gNDEuMDQxMDE2IDIzLjMzNzg5MSBDIDQwLjUzMzA3OCAyMy4yNzkyOTcgMzkuODk0ODkxIDIzLjQxODUzMSAzOS4xODE2NDEgMjMuNjc1NzgxIEMgMzcuODc4NjQxIDI0LjE0NTc4MSAyMS4yMjM3MTkgMzEuMjE3OTUzIDIwLjI2MTcxOSAzMS42MjY5NTMgQyAxOS4zNTA3MTkgMzIuMDE0OTUzIDE4LjQ4NzMyOCAzMi40Mzc4MjggMTguNDg2MzI4IDMzLjA0ODgyOCBDIDE4LjQ4NjMyOCAzMy40Nzg4MjggMTguNzQxMzEyIDMzLjcyMTY1NiAxOS40NDUzMTIgMzMuOTcyNjU2IEMgMjAuMTc3MzEzIDM0LjIzNDY1NiAyMi4wMjMyODEgMzQuNzkyNzUgMjMuMTEzMjgxIDM1LjA5Mzc1IEMgMjQuMTYzMjgxIDM1LjM4Mjc1IDI1LjM1NzM0NCAzNS4xMzA4NDQgMjYuMDI3MzQ0IDM0LjcxNDg0NCBDIDI2LjczNjM0NCAzNC4yNzM4NDQgMzQuOTI4NjI1IDI4Ljc5MjUgMzUuNTE1NjI1IDI4LjMxMjUgQyAzNi4xMDI2MjUgMjcuODMyNSAzNi41NzE3OTcgMjguNDQ4Njg4IDM2LjA5MTc5NyAyOC45Mjk2ODggQyAzNS42MTE3OTcgMjkuNDEwNjg4IDI5Ljk4ODA5NCAzNC44NjUwOTQgMjkuMjQ2MDk0IDM1LjYyMTA5NCBDIDI4LjM0NjA5NCAzNi41MzkwOTQgMjguOTg1ODQ0IDM3LjQ5MDA5NCAyOS41ODk4NDQgMzcuODcxMDk0IEMgMzAuMjc4ODQ0IDM4LjMwNjA5NCAzNS4yMzkzMjggNDEuNjMyMDE2IDM1Ljk4NjMyOCA0Mi4xNjYwMTYgQyAzNi43MzMzMjggNDIuNzAwMDE2IDM3LjQ4OTU5NCA0Mi45NDE0MDYgMzguMTgzNTk0IDQyLjk0MTQwNiBDIDM4Ljg3NzU5NCA0Mi45NDE0MDYgMzkuMjQyODkxIDQyLjAyNjc5NyAzOS41ODc4OTEgNDAuOTY2Nzk3IEMgMzkuOTkyODkxIDM5LjcyNTc5NyA0MS44OTAwNDcgMjcuMzUyMDYyIDQyLjEyMzA0NyAyNC45MTQwNjIgQyA0Mi4xOTQwNDcgMjQuMTc1MDYyIDQxLjk2MDkwNiAyMy42ODM4NDQgNDEuNTAzOTA2IDIzLjQ2NDg0NCBDIDQxLjM2NTY1NiAyMy4zOTg1OTQgNDEuMjEwMzI4IDIzLjM1NzQyMiA0MS4wNDEwMTYgMjMuMzM3ODkxIHoiPjwvcGF0aD4KPC9zdmc+")
+  no-repeat;
+}
+
+/* user-guide-images.css */
+
+/* Image containers */
+.image-container {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.image-container img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Screenshot groups */
+.screenshot-group {
+  margin: 2rem 0;
+  text-align: center;
+}
+
+.screenshot-group .screenshot {
+  display: inline-block;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.screenshot-group img {
+  width: 100%;
+  height: auto;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.screenshot-group .caption {
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+  color: #666;
+  font-style: italic;
+}
+
+/* Screenshot rows (side by side) */
+.screenshot-row {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 2rem 0;
+}
+
+.screenshot-row .screenshot {
+  flex: 1;
+  min-width: 250px;
+  max-width: 350px;
+  text-align: center;
+}
+
+.screenshot-row img {
+  width: 100%;
+  height: auto;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.screenshot-row .caption {
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+  color: #666;
+  font-style: italic;
+}
+
+/* Feature grid */
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.feature-card {
+  text-align: center;
+  padding: 2rem;
+  background: #f9f9f9;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+}
+
+.feature-card img {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 1rem;
+}
+
+.feature-card h4 {
+  margin: 1rem 0 0.5rem 0;
+  color: #000;
+}
+
+.feature-card p {
+  color: #666;
+  font-size: 0.95rem;
+}
+
+/* Infographic */
+.infographic {
+  text-align: center;
+  margin: 2rem 0;
+  padding: 2rem;
+  background: #f5f5f5;
+  border-radius: 8px;
+}
+
+.infographic img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Security badges */
+.security-badge-row {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin: 2rem 0;
+}
+
+.security-badge-row img {
+  height: 60px;
+  width: auto;
+}
+
+/* Troubleshooting grid */
+.troubleshooting-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.issue-card {
+  text-align: center;
+  padding: 1.5rem;
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+}
+
+.issue-card img {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 1rem;
+}
+
+.issue-card h4 {
+  margin: 0.5rem 0;
+  color: #000;
+  font-size: 1.1rem;
+}
+
+.issue-card p {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+/* Support options */
+.support-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.support-card {
+  text-align: center;
+  padding: 2rem;
+  background: #ffffff;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.support-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.support-card img {
+  width: 64px;
+  height: 64px;
+  margin-bottom: 1rem;
+}
+
+.support-card h4 {
+  margin: 0.5rem 0;
+  color: #000;
+}
+
+.support-card p {
+  color: #666;
+  font-size: 0.9rem;
+  margin: 0.5rem 0;
+}
+
+.support-card a {
+  color: #000;
+  text-decoration: none;
+  font-weight: 600;
+  border-bottom: 2px solid #000;
+  padding-bottom: 2px;
+}
+
+.support-card a:hover {
+  opacity: 0.7;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+  .screenshot-row {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .screenshot-row .screenshot {
+    max-width: 100%;
+  }
+  
+  .feature-grid,
+  .troubleshooting-grid,
+  .support-options {
+    grid-template-columns: 1fr;
+  }
+  
+  .security-badge-row img {
+    height: 40px;
+  }
+}
+
+
+/* For readability concerns, you should choose a lighter palette in dark mode. */
+[data-theme='dark'] {
+  --ifm-color-primary: #25c2a0;
+  --ifm-color-primary-dark: #21af90;
+  --ifm-color-primary-darker: #1fa588;
+  --ifm-color-primary-darkest: #1a8870;
+  --ifm-color-primary-light: #29d5b0;
+  --ifm-color-primary-lighter: #32d8b4;
+  --ifm-color-primary-lightest: #4fddbf;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}
