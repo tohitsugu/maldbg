@@ -6,16 +6,6 @@
 
 /* You can override the default Infima variables here. */
 :root {
-<<<<<<< HEAD
-  --ifm-color-primary: #b82c46;
-  --ifm-color-primary-dark: #852033;
-  --ifm-color-primary-darker: #52141f;
-  --ifm-color-primary-darkest: #25090e;
-  --ifm-color-primary-light: #d43956;
-  --ifm-color-primary-lighter: #e14764;
-  --ifm-color-primary-lightest: #eb607a;
-  --ifm-link-color: #086dd6; 
-=======
   --ifm-color-primary: #2e8555;
   --ifm-color-primary-dark: #29784c;
   --ifm-color-primary-darker: #277148;
@@ -23,38 +13,10 @@
   --ifm-color-primary-light: #33925d;
   --ifm-color-primary-lighter: #359962;
   --ifm-color-primary-lightest: #3cad6e;
->>>>>>> b85e6b9b7b890fca1bb13b69a9c6c567e31f196a
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
 }
 
-<<<<<<< HEAD
-div[class^='announcementBar_'] {
-  font-size: 20px;
-
-  /*
-  --site-announcement-bar-stripe-color1: hsl(
-    var(--site-primary-hue-saturation) 85%
-  );
-  --site-announcement-bar-stripe-color2: hsl(
-    var(--site-primary-hue-saturation) 95%
-  );
-   */
-  --site-announcement-bar-stripe-color1: #e8d7ff;
-  --site-announcement-bar-stripe-color2: #ffe9d1;
-
-  background: repeating-linear-gradient(
-    35deg,
-    var(--site-announcement-bar-stripe-color1),
-    var(--site-announcement-bar-stripe-color1) 20px,
-    var(--site-announcement-bar-stripe-color2) 10px,
-    var(--site-announcement-bar-stripe-color2) 40px
-  );
-  font-weight: bold;
-}
-
-=======
->>>>>>> b85e6b9b7b890fca1bb13b69a9c6c567e31f196a
 .header-github-link:hover {
   opacity: 0.6;
 }
@@ -73,10 +35,7 @@ div[class^='announcementBar_'] {
     no-repeat;
 }
 
-<<<<<<< HEAD
-=======
 
->>>>>>> b85e6b9b7b890fca1bb13b69a9c6c567e31f196a
 .header-telegram-link:hover {
   opacity: 0.6;
 }
@@ -97,9 +56,6 @@ div[class^='announcementBar_'] {
   no-repeat;
 }
 
-<<<<<<< HEAD
-
-=======
 /* user-guide-images.css */
 
 /* Image containers */
@@ -338,7 +294,6 @@ div[class^='announcementBar_'] {
     height: 40px;
   }
 }
->>>>>>> b85e6b9b7b890fca1bb13b69a9c6c567e31f196a
 
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
